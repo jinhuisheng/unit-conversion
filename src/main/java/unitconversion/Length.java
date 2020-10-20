@@ -1,34 +1,34 @@
 package unitconversion;
 
-import unitconversion.unit.Unit;
+import com.google.common.base.Objects;
 
 /**
  * @author huisheng.jin
- * @date 2020/10/14.
+ * @date 2020/10/20.
  */
 public class Length {
-    private int number;
-    private Unit unit;
+    private final int amount;
+    private final Unit unit;
+    private final int amountInInch;
 
-    public Unit getUnit() {
-        return unit;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public Length(int number, Unit unit) {
-        this.number = number;
+    public Length(int amount, Unit unit) {
+        this.amount = amount;
         this.unit = unit;
+        this.amountInInch = this.unit.convert(amount);
     }
 
-    public boolean isEqualTo(Length length) {
-        int convertValue = unit.convert(length.getUnit(), length.getNumber());
-        return this.number == convertValue;
+    @Override
+    public boolean equals(Object o) {
+        return this.amountInInch == ((Length) o).amountInInch;
     }
 
-    public Length convertTo(Unit unit) {
-        return new Length(unit.convert(this.unit, this.number), unit);
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(amount);
+    }
+
+    @Override
+    public String toString() {
+        return amount + " (" + unit + ")";
     }
 }
