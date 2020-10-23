@@ -6,9 +6,9 @@ package unitconversion;
  * @date 2020/10/23.
  */
 public class Length {
-    private int amount;
-    private Unit unit;
-    private int amountInInch;
+    private final int amount;
+    private final Unit unit;
+    private final int amountInInch;
 
     public Length(int amount, Unit unit) {
         this.amount = amount;

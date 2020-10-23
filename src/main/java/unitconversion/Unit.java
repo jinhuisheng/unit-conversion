@@ -9,8 +9,8 @@ public class Unit {
     public static Unit FOOT = new Unit("foot", 12);
     public static Unit YARD = new Unit("yard", 36);
 
-    private String name;
-    private int transferRateInInch;
+    private final String name;
+    private final int transferRateInInch;
 
     private Unit(String name, int transferRateInInch) {
         this.name = name;
