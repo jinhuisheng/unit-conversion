@@ -1,34 +1,36 @@
 package unitconversion;
 
-import com.google.common.base.Objects;
 
 /**
  * @author huisheng.jin
- * @date 2020/10/20.
+ * @date 2020/10/23.
  */
 public class Length {
-    private final int amount;
-    private final Unit unit;
-    private final int amountInInch;
+    private int amount;
+    private Unit unit;
+    private int amountInInch;
 
     public Length(int amount, Unit unit) {
         this.amount = amount;
         this.unit = unit;
-        this.amountInInch = this.unit.convert(amount);
+        this.amountInInch = unit.convert(amount);
     }
 
     @Override
-    public boolean equals(Object o) {
-        return this.amountInInch == ((Length) o).amountInInch;
+    public boolean equals(Object obj) {
+        return this.amountInInch == ((Length) obj).getAmountInInch();
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(amount);
+    private int getAmountInInch() {
+        return amountInInch;
     }
 
     @Override
     public String toString() {
-        return amount + " (" + unit + ")";
+        return "Length{" +
+                "amount=" + amount +
+                ", unit='" + unit.getName() + '\'' +
+                ", amountInInch=" + amountInInch +
+                '}';
     }
 }
